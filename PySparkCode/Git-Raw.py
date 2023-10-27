@@ -32,6 +32,9 @@ git_csv_url4 = "https://raw.githubusercontent.com/bmspacheco/bertran/main/datos/
 git_csv_url5 = "https://raw.githubusercontent.com/bmspacheco/bertran/main/datos/PedidoDetalleLima.csv"
 git_csv_url6 = "https://raw.githubusercontent.com/bmspacheco/bertran/main/datos/PedidoCabeceraProvincias.csv"
 git_csv_url7 = "https://raw.githubusercontent.com/bmspacheco/bertran/main/datos/PedidoDetalleProvincias.csv"
+git_csv_url8 = "https://raw.githubusercontent.com/bmspacheco/bertran/main/PySparkCode/Git-Raw.py"
+git_csv_url9 = "https://raw.githubusercontent.com/bmspacheco/bertran/main/PySparkCode/Raw-Stage.py"
+git_csv_url10 = "https://raw.githubusercontent.com/bmspacheco/bertran/main/PySparkCode/Stage-Business.py"
 
 s3_bucket_name = "data-lake33-utec"
 
@@ -79,6 +82,27 @@ s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key6, Body=csv_data)
 
 s3_csv_key7 = "raw/Ventas_Provincias/PedidoDetalleProvincias.csv"
 response = requests.get(git_csv_url7)
+csv_data = response.text
+df = pd.read_csv(StringIO(csv_data))
+s3_client = boto3.client('s3')
+s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key7, Body=csv_data)
+
+s3_csv_key8 = "Codigo/Git-Raw.py"
+response = requests.get(git_csv_url8)
+csv_data = response.text
+df = pd.read_csv(StringIO(csv_data))
+s3_client = boto3.client('s3')
+s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key7, Body=csv_data)
+
+s3_csv_key9 = "Codigo/Raw-Stage.py"
+response = requests.get(git_csv_url9)
+csv_data = response.text
+df = pd.read_csv(StringIO(csv_data))
+s3_client = boto3.client('s3')
+s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key7, Body=csv_data)
+
+s3_csv_key10 = "Codigo/Stage-Business.py"
+response = requests.get(git_csv_url10)
 csv_data = response.text
 df = pd.read_csv(StringIO(csv_data))
 s3_client = boto3.client('s3')
