@@ -89,23 +89,20 @@ s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key7, Body=csv_data)
 
 s3_csv_key8 = "Codigo/Git-Raw.py"
 response = requests.get(git_csv_url8)
-csv_data = response.text
-df = pd.read_csv(StringIO(csv_data))
+python_code = response.text
 s3_client = boto3.client('s3')
-s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key7, Body=csv_data)
+s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key8, Body=python_code)
 
 s3_csv_key9 = "Codigo/Raw-Stage.py"
 response = requests.get(git_csv_url9)
-csv_data = response.text
-df = pd.read_csv(StringIO(csv_data))
+python_code = response.text
 s3_client = boto3.client('s3')
-s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key7, Body=csv_data)
+s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key9, Body=python_code)
 
 s3_csv_key10 = "Codigo/Stage-Business.py"
 response = requests.get(git_csv_url10)
-csv_data = response.text
-df = pd.read_csv(StringIO(csv_data))
+python_code = response.text
 s3_client = boto3.client('s3')
-s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key7, Body=csv_data)
+s3_client.put_object(Bucket=s3_bucket_name, Key=s3_csv_key10, Body=python_code)
 
 job.commit()
