@@ -26,11 +26,6 @@ logger = glueContext.get_logger()
 SOURCE_S3 = "data-lake33-utec"
 SINK_S3 = "data-lake33-utec"
     
-if ('--DATA_ENV' in sys.argv):
-    DATA_ENV = getResolvedOptions(sys.argv, ['DATA_ENV'])['DATA_ENV']
-
-logger.info(f'Procesando para ambiente={DATA_ENV}')
-
 sourceS3Path = f's3://{SOURCE_S3}/raw'
 sourceS3Path2 = f's3://{SOURCE_S3}/stage'
 sinkS3Path2 = f's3://{SINK_S3}/business'
