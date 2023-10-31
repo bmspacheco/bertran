@@ -1,0 +1,52 @@
+"module": "module.glue",
+      "mode": "managed",
+      "type": "aws_glue_job",
+      "name": "pedidos-raw-stage",
+      "provider": "module.glue.provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:glue:us-east-1:243616138453:job/g3-pedidos-raw-stage",
+            "command": [
+              {
+                "name": "glueetl",
+                "python_version": "3",
+                "script_location": "s3://g3-glue-scripts/scripts/pedidos/pedidos-raw-stage.py"
+              }
+            ],
+            "connections": [],
+            "default_arguments": {
+              "--S3_BUCKET": "data-lake-utec-g3"
+            },
+            "description": "",
+            "execution_class": "STANDARD",
+            "execution_property": [
+              {
+                "max_concurrent_runs": 1
+              }
+            ],
+            "glue_version": "4.0",
+            "id": "g3-pedidos-raw-stage",
+            "max_capacity": 2,
+            "max_retries": 0,
+            "name": "g3-pedidos-raw-stage",
+            "non_overridable_arguments": {},
+            "notification_property": [],
+            "number_of_workers": 2,
+            "role_arn": "arn:aws:iam::243616138453:role/g3-glue-role",
+            "security_configuration": "",
+            "tags": {},
+            "tags_all": {},
+            "timeout": 10,
+            "worker_type": "G.1X"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.glue.aws_iam_role.glue-role",
+            "module.glue.data.aws_iam_policy_document.glue_assume_role"
+          ]
+        }
+      ]
+    }
